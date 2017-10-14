@@ -9,32 +9,21 @@ import org.junit.Test;
 
 public class ListaSETest
 {
-    /**
-     * Default constructor for test class ListaSETest
-     */
-    public ListaSETest()
-    {
-    }
-
-    /**
-     * Sets up the test fixture.
-     *
-     * Called before every test case method.
-     */
-    @Before
-    public void setUp()
-    {
-    }
-
-    /**
-     * Tears down the test fixture.
-     *
-     * Called after every test case method.
-     */
-    @After
-    public void tearDown()
-    {
-    }
+    @Test
+    public void eliminarUnDatoTAdelante(){
+        ListaSE<Integer> nums = new ListaSE<Integer>();
+        nums.insertar(12); nums.insertar(5); nums.insertar(66);
+        nums.eliminar(0);
+        assertEquals("[5, 66]",nums.toString());
+    }    
+    
+    @Test
+    public void eliminarUnDatoTentreMedioOExtremoDerecho(){
+        ListaSE<Integer> nums = new ListaSE<Integer>();
+        nums.insertar(12); nums.insertar(5); nums.insertar(66);
+        nums.eliminar(1);
+        assertEquals("[12, 66]",nums.toString());
+    }    
     
     @Test
     public void insertarLista(){

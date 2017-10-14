@@ -48,6 +48,12 @@ public class ListaSE<T> implements Lista<T>
      * @return nada
      */
     public void eliminar(int pos){
+        if(!vacia()){
+            if(pos==0){
+                this.ini=sig.ini;
+                this.sig=sig.sig;
+            }
+        }
     }
     /**
      * metodo que permite acceder al elemento de la posicion
