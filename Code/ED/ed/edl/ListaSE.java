@@ -52,9 +52,37 @@ public class ListaSE<T> implements Lista<T>
             if(pos==0){
                 this.ini=sig.ini;
                 this.sig=sig.sig;
+            }else{
+                eliminarRec(pos-1);
             }
         }
     }
+    
+    private void eliminarRec(int pos){
+        if(pos==0) this.sig = sig.sig;
+        else sig.eliminarRec(pos-1);
+    }
+    
+    /**
+     * Eliminar por igualdad de atributos**/
+    public void eliminar(T dato){
+        if(!vacia()){
+            if(ini.equals(dato)){
+                this.ini=sig.ini;
+                this.sig=sig.sig;
+            }else{
+                eliminarRec(dato);
+            }
+        }
+    }
+    
+    private void eliminarRec(T dato){
+        if(!sig.vacia()){
+            if(sig.ini.equals(dato)) this.sig = sig.sig;
+            else sig.eliminarRec(dato);
+        }
+    }
+    
     /**
      * metodo que permite acceder al elemento de la posicion
      * pos
@@ -69,7 +97,9 @@ public class ListaSE<T> implements Lista<T>
     public void insertar(int pos, T dato){
     }
     public int longitud(){
-        return 0;
+        int longitud=0;
+        if(!vacia()) longitud = 1 + sig.longitud();
+        return longitud;
     }
     public boolean igual(Lista<T> otra){
         return false;

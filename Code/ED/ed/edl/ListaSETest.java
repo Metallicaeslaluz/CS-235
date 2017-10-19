@@ -12,7 +12,7 @@ public class ListaSETest
     @Test
     public void eliminarUnDatoTAdelante(){
         ListaSE<Integer> nums = new ListaSE<Integer>();
-        nums.insertar(12); nums.insertar(5); nums.insertar(66);
+        nums.insertar(12); nums.insertar(5); nums.insertar(66);// nums = [12, 5, 66]
         nums.eliminar(0);
         assertEquals("[5, 66]",nums.toString());
     }    
@@ -20,10 +20,31 @@ public class ListaSETest
     @Test
     public void eliminarUnDatoTentreMedioOExtremoDerecho(){
         ListaSE<Integer> nums = new ListaSE<Integer>();
-        nums.insertar(12); nums.insertar(5); nums.insertar(66);
+        nums.insertar(12); nums.insertar(5); nums.insertar(66);//[12, 5, 66]
         nums.eliminar(1);
         assertEquals("[12, 66]",nums.toString());
     }    
+    
+    @Test
+    public void eliminarUltimoDato(){
+        ListaSE<Integer> nums = new ListaSE<Integer>();
+        nums.insertar(12); nums.insertar(5); nums.insertar(66);//[12, 5, 66]
+        nums.eliminar(2);
+        assertEquals("[12, 5]",nums.toString());
+    }
+    
+    @Test
+    public void eliminarDatoPorEquals(){
+        ListaSE<Estudiante> listaEs = new ListaSE<Estudiante>();
+        listaEs.insertar(new Estudiante("Bob Mett",20170304,6777));
+        listaEs.insertar(new Estudiante("Ana Perez",20170504,7742));
+        listaEs.insertar(new Estudiante("Lionel Messi",20160334,6453));
+        
+        Estudiante esEliminar = new Estudiante("Cristiano Messi",20160334,6453);
+        listaEs.eliminar(esEliminar);
+        
+        assertEquals(3,listaEs.longitud());
+    }
     
     @Test
     public void insertarLista(){
@@ -53,6 +74,28 @@ public class ListaSETest
         }
         public String toString(){
             return "("+x+","+y+")";
+        }
+    }
+    
+    public class Estudiante{
+        private int codigoSis;
+        private String nombre;
+        private int ci;
+        public Estudiante(String nombre, int codigoSis, int ci){
+            this.nombre=nombre;
+            this.codigoSis=codigoSis;
+            this.ci=ci;
+        }
+        
+        @Override
+        public boolean equals(Object o){
+            boolean equals = false;//same=iguales
+            if(o instanceof Estudiante){
+                Estudiante otro = (Estudiante)(o);
+                equals = otro.nombre.equals(this.nombre) && otro.codigoSis==this.codigoSis &&
+                         otro.ci==this.ci;
+            }
+            return equals;
         }
     }
 }
