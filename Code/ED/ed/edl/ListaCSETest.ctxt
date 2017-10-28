@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=ListaCSETest
+comment0.text=\n\ The\ test\ class\ ListaCSETest.\n\n\ @author\ \ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=void\ insertarPorDefecto()
+comment2.params=
+comment2.target=void\ eliminarPrimerElemento()
+comment3.params=
+comment3.target=void\ eliminarListaDeUnSoloElemento()
+comment4.params=
+comment4.target=void\ eliminarElementoEnMedio()
+comment5.params=
+comment5.target=void\ eliminarUltimo()
+numComments=6

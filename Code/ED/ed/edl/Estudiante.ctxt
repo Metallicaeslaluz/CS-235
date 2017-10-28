@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Estudiante
+comment1.params=nombre\ codigoSis\ ci
+comment1.target=Estudiante(java.lang.String,\ int,\ int)
+comment2.params=nota
+comment2.target=void\ asignarNota(int)
+comment3.params=o
+comment3.target=boolean\ equals(java.lang.Object)
+comment4.params=otro
+comment4.target=int\ compareTo(Estudiante)
+comment5.params=
+comment5.target=java.lang.String\ toString()
+numComments=6
