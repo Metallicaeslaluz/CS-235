@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=ArbolBin
+comment1.params=
+comment1.target=ArbolBin()
+comment2.params=raiz
+comment2.target=ArbolBin(java.lang.Object)
+comment3.params=dato
+comment3.target=void\ insertarAmplitud(java.lang.Object)
+comment4.params=
+comment4.target=void\ revertirRamaMasCorta()
+comment5.params=
+comment5.target=ed.edl.ListaSE\ getRamas()
+comment6.params=arbol\ rama\ ramas
+comment6.target=void\ buscarRamas(ArbolBin,\ ed.edl.ListaSE,\ ed.edl.ListaSE)
+comment7.params=
+comment7.target=boolean\ estaVacio()
+numComments=8

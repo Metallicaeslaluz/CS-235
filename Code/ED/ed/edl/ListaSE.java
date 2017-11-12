@@ -90,7 +90,12 @@ public class ListaSE<T> implements Lista<T>
      * @return elemento de la posicion pos
      */
     public T acceder(int pos){
-        return null;
+        T res = null;
+        if(!vacia()){
+            if(pos == 0) res = ini;
+            else res = sig.acceder(pos-1);
+        }
+        return res;
     }
     public void reemplazar(int pos, T dato){
     }
@@ -125,4 +130,18 @@ public class ListaSE<T> implements Lista<T>
         s="["+s.replace("#",", ")+"]";
         return s;
     }
+    
+    public ListaSE<T> clonar(){
+        ListaSE<T> clon = new ListaSE<T>();
+        for(int indice = 0; indice<longitud(); indice++){
+            clon.insertar(acceder(indice));
+        }
+        return clon;
+    }
+    
+    
+    
+    
+    
+    
 }
