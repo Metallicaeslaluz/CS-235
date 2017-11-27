@@ -16,6 +16,16 @@ public class ArbolBin<T>
         izq = der = null;
     }
     
+    public void insertarPares(T padre, T dato){
+        if(this.raiz.equals(padre)){
+            if(izq==null) izq = new ArbolBin<T>(dato);
+            else if(der==null) der = new ArbolBin<T>(dato);
+        }else{
+            if(izq!=null) izq.insertarPares(padre,dato);
+            if(der!=null) der.insertarPares(padre,dato);
+        }
+    }
+    
     public void insertarAmplitud(T dato){
         if(estaVacio()){
             this.raiz = dato;
@@ -38,7 +48,35 @@ public class ArbolBin<T>
     }
     
     public void revertirRamaMasCorta(){
-        ListaSE<ListaSE<T>> ramas;
+        ListaSE<T> ramaMC = getRamaMasCorta();
+        revertirRamaMasCorta(this,ramaMC,0,ramaMC.longitud()-1);
+    }
+    
+    private void revertirRamaMasCorta(ArbolBin<T> arbol,ListaSE<T> ramaMC, 
+                                    int prim, int ult){
+        if(arbol!=null){
+            if(ult > -1){
+                if(arbol.raiz.equals(ramaMC.acceder(prim))){
+                    arbol.raiz = ramaMC.acceder(ult);
+                    if(arbol.izq!=null) 
+                        revertirRamaMasCorta(arbol.izq,ramaMC, prim+1, ult-1);
+                    if(arbol.der!=null) 
+                        revertirRamaMasCorta(arbol.der,ramaMC, prim+1, ult-1);
+                }
+            }
+        }
+    }
+    
+    public ListaSE<T> getRamaMasCorta(){
+        ListaSE<T> ramaMC = new ListaSE<T>(),rama;
+        ListaSE<ListaSE<T>> ramas = getRamas();
+        if(ramas.longitud()>0) ramaMC = ramas.acceder(0);
+        for(int indiceRama = 1; indiceRama < ramas.longitud(); indiceRama++){
+            rama = ramas.acceder(indiceRama);
+            if(rama.longitud() < ramaMC.longitud()) 
+                ramaMC = rama;
+        }
+        return ramaMC;
     }
     
     public ListaSE<ListaSE<T>> getRamas(){
@@ -46,10 +84,10 @@ public class ArbolBin<T>
         ListaSE<T> rama = new ListaSE<T>();
         buscarRamas(this,rama,ramas);
         return ramas;
-    }
+    }    
     
     private void buscarRamas(ArbolBin<T> arbol, ListaSE<T> rama, ListaSE<ListaSE<T>> ramas){
-        if(!arbol.estaVacio()){
+        if(arbol!=null){
             rama.insertar(arbol.raiz);
             if(arbol.izq == null && arbol.der == null) ramas.insertar(rama);
             else{
@@ -59,6 +97,18 @@ public class ArbolBin<T>
                     buscarRamas(arbol.der, rama.clonar(), ramas);
             }
         }
+    }
+    
+    public T getRaiz(){
+        return raiz;
+    }
+    
+    public ArbolBin<T> getIzq(){
+        return izq;
+    }
+    
+    public ArbolBin<T> getDer(){
+        return der;
     }
     
     public boolean estaVacio(){

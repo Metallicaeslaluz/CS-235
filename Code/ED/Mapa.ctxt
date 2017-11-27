@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Mapa
+comment1.params=
+comment1.target=Mapa()
+comment2.params=puebloAnt\ puebloAct
+comment2.target=void\ agregarPueblo(Pueblo,\ Pueblo)
+comment3.params=tiempoX
+comment3.target=ed.edl.ListaSE\ getListaPueblos(int)
+comment4.params=cuencaBora\ listaPueblos\ tiempoX
+comment4.target=ed.edl.ListaSE\ getListaPueblos(ed.ednl.ArbolBin,\ ed.edl.ListaSE,\ int)
+numComments=5

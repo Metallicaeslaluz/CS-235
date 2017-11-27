@@ -139,7 +139,9 @@ public class ListaSE<T> implements Lista<T>
         return clon;
     }
     
-    
+    public ListaSE<T> listaMayorLogitud(ListaSE<T> a, ListaSE<T> b){
+        return a.longitud() > b.longitud() ? a:b;
+    }
     
     
     
